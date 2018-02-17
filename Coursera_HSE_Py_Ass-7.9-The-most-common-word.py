@@ -1,14 +1,9 @@
-text = []
-while True:
-    textInp = input().strip().split()
-    if len(textInp) > 0:
-        text += textInp
-    else:
-        break
+text = open('input.txt', 'r', encoding='utf8')
 frequentWord = {}
-print(text)
-for word in text:
-    frequentWord[word] = frequentWord.get(word, 0) + 1
+for line in text:
+    line = line.strip().split()
+    for word in line:
+        frequentWord[word] = frequentWord.get(word, 0) + 1
 sortedItemsList = sorted(frequentWord.items(), key=lambda x: -x[1])
 maxItemsList = []
 for i in range(len(sortedItemsList)):
